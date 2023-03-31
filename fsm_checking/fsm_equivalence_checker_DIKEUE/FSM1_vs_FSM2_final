@@ -1,0 +1,120 @@
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: dh_check
+Output 1: null_action
+Output 2: dh_key_response
+[con_req version_max_len_req pair_oob_req key_exchange sm_random_send dh_check / version_resp null_action null_action null_action null_action null_action] [con_req version_max_len_req pair_oob_req key_exchange sm_random_send dh_check / null_action null_action pair_resp null_action sm_random_received dh_key_response]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: dh_check
+Output 1: dh_key_response
+Output 2: null_action
+[con_req length_req pair_key_zero_req pair_keyboard_display_req key_exchange sm_random_send dh_check / version_resp length_resp null_action pair_resp public_key_response_sm_confirm sm_random_received dh_key_response] [con_req length_req pair_key_zero_req pair_keyboard_display_req key_exchange sm_random_send dh_check / null_action length_resp null_action null_action null_action null_action null_action]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: sm_random_send
+Output 1: null_action
+Output 2: sm_random_received
+[con_req pair_oob_req key_exchange sm_random_send / version_resp null_action null_action null_action] [con_req pair_oob_req key_exchange sm_random_send / null_action pair_resp null_action sm_random_received]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: sm_random_send
+Output 1: sm_random_received
+Output 2: null_action
+[con_req length_req pair_req key_exchange sm_random_send / version_resp length_resp pair_resp public_key_response_sm_confirm sm_random_received] [con_req length_req pair_req key_exchange sm_random_send / null_action length_resp null_action null_action null_action]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: key_exchange
+Output 1: null_action
+Output 2: public_key_response_sm_confirm
+[con_req pair_keyboard_display_req enc_plain_pause_req key_exchange / version_resp pair_resp null_action null_action] [con_req pair_keyboard_display_req enc_plain_pause_req key_exchange / null_action pair_resp null_action public_key_response_sm_confirm]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: key_exchange
+Output 1: public_key_response_sm_confirm
+Output 2: null_action
+[con_req length_req pair_display_yes_no_req key_exchange / version_resp length_resp pair_resp public_key_response_sm_confirm] [con_req length_req pair_display_yes_no_req key_exchange / null_action length_resp null_action null_action]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: pair_oob_req
+Output 1: null_action
+Output 2: pair_resp
+[con_req pair_oob_req / version_resp null_action] [con_req pair_oob_req / null_action pair_resp]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: version_req
+Output 1: null_action
+Output 2: version_resp
+[con_req version_req / version_resp null_action] [con_req version_req / null_action version_resp]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: con_req
+Output 1: version_resp
+Output 2: null_action
+[ con_req /  version_resp] [ con_req /  null_action]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: pri_req
+Output 1: null_action
+Output 2: pri_resp
+[con_req pair_oob_req con_timeout_zero_req pair_no_sc_req pri_req / version_resp null_action null_action null_action null_action] [con_req pair_oob_req con_timeout_zero_req pair_no_sc_req pri_req / null_action pair_resp null_action pair_resp_no_sc pri_resp]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: pri_req
+Output 1: pri_resp
+Output 2: null_action
+[con_req pair_oob_req pri_req / version_resp null_action pri_resp] [con_req pair_oob_req pri_req / null_action pair_resp null_action]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: length_req
+Output 1: null_action
+Output 2: length_resp
+[con_req length_req pair_keyboard_display_req version_max_len_req con_req length_req / version_resp length_resp pair_resp null_action null_action null_action] [con_req length_req pair_keyboard_display_req version_max_len_req con_req length_req / null_action length_resp null_action null_action null_action length_resp]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: length_req
+Output 1: length_resp
+Output 2: null_action
+[con_req pair_oob_req length_req / version_resp null_action length_resp] [con_req pair_oob_req length_req / null_action pair_resp null_action]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: mtu_req
+Output 1: null_action
+Output 2: mtu_resp
+[con_req pair_oob_req con_timeout_zero_req pair_keyboard_display_no_sc_req mtu_req / version_resp null_action null_action null_action null_action] [con_req pair_oob_req con_timeout_zero_req pair_keyboard_display_no_sc_req mtu_req / null_action pair_resp null_action pair_resp_no_sc mtu_resp]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: mtu_req
+Output 1: mtu_resp
+Output 2: null_action
+[con_req pair_oob_req mtu_req / version_resp null_action mtu_resp] [con_req pair_oob_req mtu_req / null_action pair_resp null_action]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: feature_req
+Output 1: null_action
+Output 2: feature_resp
+[con_req length_req pair_req con_req feature_req / version_resp length_resp pair_resp null_action null_action] [con_req length_req pair_req con_req feature_req / null_action length_resp null_action null_action feature_resp]
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Input: feature_req
+Output 1: feature_resp
+Output 2: null_action
+[con_req pair_oob_req feature_req / version_resp null_action feature_resp] [con_req pair_oob_req feature_req / null_action pair_resp null_action]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

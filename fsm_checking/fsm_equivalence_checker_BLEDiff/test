@@ -1,0 +1,246 @@
+incoming message: 
+dh_check_invalid
+incoming message: 
+key_exchange_invalid
+incoming message: 
+desc_req
+outgoing message 1: 
+null_action
+outgoing message 2: 
+desc_resp
+ ########## Equivalence Checking for <output1: null_action, output2: desc_resp> diversity class ############
+LTL Property:
+
+
+LTLSPEC ( 
+ G( ! (input = desc_req & ue_nas1_action = null_action & ue_nas2_action = desc_resp))
+);
+out in iterative_checker
+[]
+outgoing message 1: 
+desc_resp
+outgoing message 2: 
+null_action
+ ########## Equivalence Checking for <output1: desc_resp, output2: null_action> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = desc_req & ue_nas1_action = desc_resp & ue_nas2_action = null_action))
+);
+#### offen_state =2 #######
+('desc_resp', 'null_action')
+desc_req
+input_condition
+desc_req
+input_list[len(input_list)-1]
+desc_req
+input_condition
+desc_req
+input_list[len(input_list)-1]
+desc_req
+output_list line 448:
+[con_req length_req desc_req / null_action length_resp desc_resp] [con_req length_req desc_req / null_action null_action null_action]
+out in iterative_checker
+['[con_req length_req desc_req / null_action length_resp desc_resp] [con_req length_req desc_req / null_action null_action null_action]']
+Missed here!
+incoming message: 
+includes_req
+incoming message: 
+char_req
+incoming message: 
+enc_req
+outgoing message 1: 
+null_action
+outgoing message 2: 
+enc_resp_ll_reject
+ ########## Equivalence Checking for <output1: null_action, output2: enc_resp_ll_reject> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = enc_req & ue_nas1_action = null_action & ue_nas2_action = enc_resp_ll_reject))
+);
+out in iterative_checker
+[]
+outgoing message 1: 
+enc_resp_ll_reject
+outgoing message 2: 
+null_action
+ ########## Equivalence Checking for <output1: enc_resp_ll_reject, output2: null_action> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = enc_req & ue_nas1_action = enc_resp_ll_reject & ue_nas2_action = null_action))
+);
+#### offen_state =2 #######
+('enc_resp_ll_reject', 'null_action')
+enc_req
+input_condition
+enc_req
+input_list[len(input_list)-1]
+enc_req
+input_condition
+enc_req
+input_list[len(input_list)-1]
+enc_req
+output_list line 448:
+[length_req con_req enc_req / null_action null_action enc_resp_ll_reject] [length_req con_req enc_req / null_action null_action null_action]
+out in iterative_checker
+['[length_req con_req enc_req / null_action null_action enc_resp_ll_reject] [length_req con_req enc_req / null_action null_action null_action]']
+Missed here!
+incoming message: 
+dh_check
+incoming message: 
+sm_random_send
+incoming message: 
+key_exchange
+incoming message: 
+pair_req_key_zero
+outgoing message 1: 
+null_action
+outgoing message 2: 
+pair_resp
+ ########## Equivalence Checking for <output1: null_action, output2: pair_resp> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = pair_req_key_zero & ue_nas1_action = null_action & ue_nas2_action = pair_resp))
+);
+out in iterative_checker
+[]
+outgoing message 1: 
+pair_resp
+outgoing message 2: 
+null_action
+ ########## Equivalence Checking for <output1: pair_resp, output2: null_action> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = pair_req_key_zero & ue_nas1_action = pair_resp & ue_nas2_action = null_action))
+);
+out in iterative_checker
+[]
+incoming message: 
+pair_req_no_sc_bonding
+outgoing message 1: 
+null_action
+outgoing message 2: 
+pair_resp
+ ########## Equivalence Checking for <output1: null_action, output2: pair_resp> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = pair_req_no_sc_bonding & ue_nas1_action = null_action & ue_nas2_action = pair_resp))
+);
+out in iterative_checker
+[]
+outgoing message 1: 
+pair_resp
+outgoing message 2: 
+null_action
+ ########## Equivalence Checking for <output1: pair_resp, output2: null_action> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = pair_req_no_sc_bonding & ue_nas1_action = pair_resp & ue_nas2_action = null_action))
+);
+out in iterative_checker
+[]
+incoming message: 
+pair_req_no_sc
+outgoing message 1: 
+null_action
+outgoing message 2: 
+pair_resp
+ ########## Equivalence Checking for <output1: null_action, output2: pair_resp> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = pair_req_no_sc & ue_nas1_action = null_action & ue_nas2_action = pair_resp))
+);
+out in iterative_checker
+[]
+outgoing message 1: 
+pair_resp
+outgoing message 2: 
+null_action
+ ########## Equivalence Checking for <output1: pair_resp, output2: null_action> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = pair_req_no_sc & ue_nas1_action = pair_resp & ue_nas2_action = null_action))
+);
+out in iterative_checker
+[]
+incoming message: 
+pair_req
+outgoing message 1: 
+null_action
+outgoing message 2: 
+pair_resp
+ ########## Equivalence Checking for <output1: null_action, output2: pair_resp> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = pair_req & ue_nas1_action = null_action & ue_nas2_action = pair_resp))
+);
+out in iterative_checker
+[]
+outgoing message 1: 
+pair_resp
+outgoing message 2: 
+null_action
+ ########## Equivalence Checking for <output1: pair_resp, output2: null_action> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = pair_req & ue_nas1_action = pair_resp & ue_nas2_action = null_action))
+);
+out in iterative_checker
+[]
+incoming message: 
+pri_req
+incoming message: 
+length_req
+outgoing message 1: 
+null_action
+outgoing message 2: 
+length_resp
+ ########## Equivalence Checking for <output1: null_action, output2: length_resp> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = length_req & ue_nas1_action = null_action & ue_nas2_action = length_resp))
+);
+out in iterative_checker
+[]
+outgoing message 1: 
+length_resp
+outgoing message 2: 
+null_action
+ ########## Equivalence Checking for <output1: length_resp, output2: null_action> diversity class ############
+LTL Property:
+
+LTLSPEC ( 
+ G( ! (input = length_req & ue_nas1_action = length_resp & ue_nas2_action = null_action))
+);
+#### offen_state =1 #######
+('length_resp', 'null_action')
+length_req
+input_condition
+length_req
+input_list[len(input_list)-1]
+length_req
+input_condition
+length_req
+input_list[len(input_list)-1]
+length_req
+output_list line 448:
+[con_req length_req / null_action length_resp] [con_req length_req / null_action null_action]
+out in iterative_checker
+['[con_req length_req / null_action length_resp] [con_req length_req / null_action null_action]']
+Missed here!
+incoming message: 
+con_req
+incoming message: 
+scan_req
+--- 3.27393603325 seconds ---

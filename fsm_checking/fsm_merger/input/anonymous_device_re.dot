@@ -1,0 +1,22 @@
+digraph g {
+__start0 [label="" shape="none"];
+
+	s0 [shape="circle" label="s0"];
+	s1 [shape="circle" label="s1"];
+	s0 -> s1 [label="enc_req / enc_resp_start_enc_req"];
+	s0 -> s1 [label="start_enc_resp / null_action"];
+	s0 -> s1 [label="enc_pause_req / null_action"];
+	s0 -> s0 [label="enc_pause_resp / null_action"];
+	s0 -> s0 [label="enc_pause_resp_plain / null_action"];
+	s0 -> s0 [label="enc_pause_req_plain / null_action"];
+	s0 -> s1 [label="start_enc_resp_plain / null_action"];
+	s1 -> s1 [label="enc_req / null_action"];
+	s1 -> s1 [label="start_enc_resp / start_enc_resp"];
+	s1 -> s1 [label="enc_pause_req / null_action"];
+	s1 -> s1 [label="enc_pause_resp / null_action"];
+	s1 -> s1 [label="enc_pause_resp_plain / null_action"];
+	s1 -> s1 [label="enc_pause_req_plain / null_action"];
+	s1 -> s1 [label="start_enc_resp_plain / null_action"];
+
+__start0 -> s0;
+}

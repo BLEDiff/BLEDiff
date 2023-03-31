@@ -1,0 +1,10 @@
+Mar 30, 2023 9:18:36 PM ble.statelearner.Learner <init>
+INFO: Using BLE SUL
+Mar 30, 2023 9:18:36 PM ble.statelearner.Learner learn
+INFO: Using learning algorithm TTTLearnerMealy
+Mar 30, 2023 9:18:36 PM ble.statelearner.Learner learn
+INFO: Using equivalence algorithm MealyWpMethodEQOracle
+Mar 30, 2023 9:18:36 PM ble.statelearner.Learner learn
+INFO: Starting learning
+Mar 30, 2023 9:18:36 PM de.learnlib.logging.LearnLogger logPhase
+INFO: Starting round 1

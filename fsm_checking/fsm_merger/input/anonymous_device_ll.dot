@@ -1,0 +1,28 @@
+digraph g {
+__start0 [label="" shape="none"];
+
+	s0 [shape="circle" label="s0"];
+	s1 [shape="circle" label="s1"];
+	s0 -> s0 [label="feature_req / null_action"];
+	s0 -> s0 [label="mtu_req / null_action"];
+	s0 -> s0 [label="length_req / null_action"];
+	s0 -> s0 [label="pri_req / null_action"];
+	s0 -> s1 [label="con_req / null_action"];
+	s0 -> s0 [label="con_req_interval_zero / null_action"];
+	s0 -> s1 [label="con_req_timeout_zero / null_action"];
+	s0 -> s0 [label="version_req / null_action"];
+	s0 -> s0 [label="version_req_max_len / null_action"];
+	s0 -> s0 [label="pair_req / null_action"];
+	s1 -> s1 [label="feature_req / feature_resp"];
+	s1 -> s1 [label="mtu_req / mtu_resp"];
+	s1 -> s1 [label="length_req / null_action"];
+	s1 -> s1 [label="pri_req / pri_resp"];
+	s1 -> s1 [label="con_req / null_action"];
+	s1 -> s0 [label="con_req_interval_zero / null_action"];
+	s1 -> s1 [label="con_req_timeout_zero / null_action"];
+	s1 -> s1 [label="version_req / version_resp"];
+	s1 -> s1 [label="version_req_max_len / version_resp"];
+	s1 -> s1 [label="pair_req / pair_resp"];
+
+__start0 -> s0;
+}

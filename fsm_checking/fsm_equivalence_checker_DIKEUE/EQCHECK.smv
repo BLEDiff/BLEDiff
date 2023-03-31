@@ -1,0 +1,304 @@
+MODULE main
+
+------------------- Environment, State, and Input variables --------------------
+
+VAR
+
+input	:
+{	feature_req,
+	mtu_req,
+	length_req,
+	pri_req,
+	con_req,
+	con_interval_zero_req,
+	con_timeout_zero_req,
+	version_req,
+	version_max_len_req,
+	pair_req,
+	pair_keyboard_display_req,
+	pair_display_yes_no_req,
+	pair_oob_req,
+	pair_no_sc_req,
+	pair_keyboard_display_no_sc_req,
+	pair_display_yes_no_no_sc_req,
+	pair_key_zero_req,
+	key_exchange,
+	sm_random_send,
+	dh_check,
+	enc_req,
+	key_invalid_exchange,
+	dh_invalid_check,
+	pair_confirm,
+	pair_wrong_value_confirm,
+	enc_pause_req,
+	enc_pause_resp,
+	enc_plain_pause_resp,
+	enc_plain_pause_req,
+	discon_req
+};	
+
+---------------- state for BLE1 state machine ----------------
+
+ble1_state	:
+{
+	ll_s0,
+	ll_s1,
+	smp_s1,
+	smp_s2,
+	smp_s3,
+	recon_s0,
+	recon_s1
+};
+
+---------------- state for BLE2 state machine ----------------
+
+ble2_state	:
+{
+	ll_s0,
+	ll_s1,
+	smp_s1,
+	smp_s2,
+	smp_s3,
+	smp_s4,
+	recon_s0,
+	recon_s1
+};
+------------ Possible BLE1 actions ----------------
+
+ble1_action	:
+{
+	version_resp,
+	feature_resp,
+	mtu_resp,
+	length_resp,
+	pri_resp,
+	null_action,
+	pair_resp,
+	pair_resp_no_sc,
+	public_key_response_sm_confirm,
+	sm_random_received,
+	dh_key_response
+};
+------------ Possible BLE2 actions ----------------
+
+ble2_action	:
+{
+	null_action,
+	feature_resp,
+	mtu_resp,
+	length_resp,
+	pri_resp,
+	version_resp,
+	pair_resp,
+	pair_resp_no_sc,
+	public_key_response_sm_confirm,
+	sm_random_received,
+	dh_key_response
+};
+
+
+DEFINE
+
+-----------------BLE1 transitions --------------------
+BLE1_T5	:=	 (ble1_state = ll_s0 & input = con_req)	;
+BLE1_T10	:=	 (ble1_state = ll_s1 & input = feature_req)	;
+BLE1_T11	:=	 (ble1_state = ll_s1 & input = mtu_req)	;
+BLE1_T12	:=	 (ble1_state = ll_s1 & input = length_req)	;
+BLE1_T13	:=	 (ble1_state = ll_s1 & input = pri_req)	;
+BLE1_T14	:=	 (ble1_state = ll_s1 & input = con_req)	;
+BLE1_T15	:=	 (ble1_state = ll_s1 & input = con_interval_zero_req)	;
+BLE1_T16	:=	 (ble1_state = ll_s1 & input = con_timeout_zero_req)	;
+BLE1_T19	:=	 (ble1_state = ll_s1 & input = pair_req)	;
+BLE1_T20	:=	 (ble1_state = ll_s1 & input = pair_keyboard_display_req)	;
+BLE1_T21	:=	 (ble1_state = ll_s1 & input = pair_display_yes_no_req)	;
+BLE1_T23	:=	 (ble1_state = ll_s1 & input = pair_no_sc_req)	;
+BLE1_T24	:=	 (ble1_state = ll_s1 & input = pair_keyboard_display_no_sc_req)	;
+BLE1_T25	:=	 (ble1_state = ll_s1 & input = pair_display_yes_no_no_sc_req)	;
+BLE1_T39	:=	 (ble1_state = smp_s1 & input = pair_req)	;
+BLE1_T40	:=	 (ble1_state = smp_s1 & input = pair_keyboard_display_req)	;
+BLE1_T41	:=	 (ble1_state = smp_s1 & input = pair_display_yes_no_req)	;
+BLE1_T42	:=	 (ble1_state = smp_s1 & input = pair_oob_req)	;
+BLE1_T43	:=	 (ble1_state = smp_s1 & input = pair_no_sc_req)	;
+BLE1_T44	:=	 (ble1_state = smp_s1 & input = pair_keyboard_display_no_sc_req)	;
+BLE1_T45	:=	 (ble1_state = smp_s1 & input = pair_display_yes_no_no_sc_req)	;
+BLE1_T46	:=	 (ble1_state = smp_s1 & input = pair_key_zero_req)	;
+BLE1_T47	:=	 (ble1_state = smp_s1 & input = key_exchange)	;
+BLE1_T50	:=	 (ble1_state = smp_s1 & input = enc_req)	;
+BLE1_T51	:=	 (ble1_state = smp_s1 & input = key_invalid_exchange)	;
+BLE1_T55	:=	 (ble1_state = smp_s1 & input = enc_pause_req)	;
+BLE1_T58	:=	 (ble1_state = smp_s1 & input = enc_plain_pause_req)	;
+BLE1_T59	:=	 (ble1_state = smp_s2 & input = pair_req)	;
+BLE1_T60	:=	 (ble1_state = smp_s2 & input = pair_keyboard_display_req)	;
+BLE1_T61	:=	 (ble1_state = smp_s2 & input = pair_display_yes_no_req)	;
+BLE1_T62	:=	 (ble1_state = smp_s2 & input = pair_oob_req)	;
+BLE1_T63	:=	 (ble1_state = smp_s2 & input = pair_no_sc_req)	;
+BLE1_T64	:=	 (ble1_state = smp_s2 & input = pair_keyboard_display_no_sc_req)	;
+BLE1_T65	:=	 (ble1_state = smp_s2 & input = pair_display_yes_no_no_sc_req)	;
+BLE1_T66	:=	 (ble1_state = smp_s2 & input = pair_key_zero_req)	;
+BLE1_T68	:=	 (ble1_state = smp_s2 & input = sm_random_send)	;
+BLE1_T70	:=	 (ble1_state = smp_s2 & input = enc_req)	;
+BLE1_T75	:=	 (ble1_state = smp_s2 & input = enc_pause_req)	;
+BLE1_T78	:=	 (ble1_state = smp_s2 & input = enc_plain_pause_req)	;
+BLE1_T79	:=	 (ble1_state = smp_s3 & input = pair_req)	;
+BLE1_T80	:=	 (ble1_state = smp_s3 & input = pair_keyboard_display_req)	;
+BLE1_T81	:=	 (ble1_state = smp_s3 & input = pair_display_yes_no_req)	;
+BLE1_T82	:=	 (ble1_state = smp_s3 & input = pair_oob_req)	;
+BLE1_T83	:=	 (ble1_state = smp_s3 & input = pair_no_sc_req)	;
+BLE1_T84	:=	 (ble1_state = smp_s3 & input = pair_keyboard_display_no_sc_req)	;
+BLE1_T85	:=	 (ble1_state = smp_s3 & input = pair_display_yes_no_no_sc_req)	;
+BLE1_T86	:=	 (ble1_state = smp_s3 & input = pair_key_zero_req)	;
+BLE1_T89	:=	 (ble1_state = smp_s3 & input = dh_check)	;
+BLE1_T90	:=	 (ble1_state = smp_s3 & input = enc_req)	;
+BLE1_T92	:=	 (ble1_state = smp_s3 & input = dh_invalid_check)	;
+BLE1_T95	:=	 (ble1_state = smp_s3 & input = enc_pause_req)	;
+BLE1_T98	:=	 (ble1_state = smp_s3 & input = enc_plain_pause_req)	;
+BLE1_T99	:=	 (ble1_state = smp_s3 & input = discon_req)	;
+BLE1_T100	:=	 (ble1_state = recon_s0 & input = enc_pause_req)	;
+
+-----------------BLE2 transitions --------------------
+BLE2_T5	:=	 (ble2_state = ll_s0 & input = con_req)	;
+BLE2_T10	:=	 (ble2_state = ll_s1 & input = feature_req)	;
+BLE2_T11	:=	 (ble2_state = ll_s1 & input = mtu_req)	;
+BLE2_T12	:=	 (ble2_state = ll_s1 & input = length_req)	;
+BLE2_T13	:=	 (ble2_state = ll_s1 & input = pri_req)	;
+BLE2_T15	:=	 (ble2_state = ll_s1 & input = con_interval_zero_req)	;
+BLE2_T16	:=	 (ble2_state = ll_s1 & input = con_timeout_zero_req)	;
+BLE2_T17	:=	 (ble2_state = ll_s1 & input = version_req)	;
+BLE2_T19	:=	 (ble2_state = ll_s1 & input = pair_req)	;
+BLE2_T20	:=	 (ble2_state = ll_s1 & input = pair_keyboard_display_req)	;
+BLE2_T21	:=	 (ble2_state = ll_s1 & input = pair_display_yes_no_req)	;
+BLE2_T22	:=	 (ble2_state = ll_s1 & input = pair_oob_req)	;
+BLE2_T23	:=	 (ble2_state = ll_s1 & input = pair_no_sc_req)	;
+BLE2_T24	:=	 (ble2_state = ll_s1 & input = pair_keyboard_display_no_sc_req)	;
+BLE2_T25	:=	 (ble2_state = ll_s1 & input = pair_display_yes_no_no_sc_req)	;
+BLE2_T39	:=	 (ble2_state = smp_s1 & input = pair_req)	;
+BLE2_T40	:=	 (ble2_state = smp_s1 & input = pair_keyboard_display_req)	;
+BLE2_T41	:=	 (ble2_state = smp_s1 & input = pair_display_yes_no_req)	;
+BLE2_T42	:=	 (ble2_state = smp_s1 & input = pair_oob_req)	;
+BLE2_T43	:=	 (ble2_state = smp_s1 & input = pair_no_sc_req)	;
+BLE2_T44	:=	 (ble2_state = smp_s1 & input = pair_keyboard_display_no_sc_req)	;
+BLE2_T45	:=	 (ble2_state = smp_s1 & input = pair_display_yes_no_no_sc_req)	;
+BLE2_T46	:=	 (ble2_state = smp_s1 & input = pair_key_zero_req)	;
+BLE2_T47	:=	 (ble2_state = smp_s1 & input = key_exchange)	;
+BLE2_T50	:=	 (ble2_state = smp_s1 & input = enc_req)	;
+BLE2_T51	:=	 (ble2_state = smp_s1 & input = key_invalid_exchange)	;
+BLE2_T55	:=	 (ble2_state = smp_s1 & input = enc_pause_req)	;
+BLE2_T59	:=	 (ble2_state = smp_s2 & input = pair_req)	;
+BLE2_T60	:=	 (ble2_state = smp_s2 & input = pair_keyboard_display_req)	;
+BLE2_T61	:=	 (ble2_state = smp_s2 & input = pair_display_yes_no_req)	;
+BLE2_T62	:=	 (ble2_state = smp_s2 & input = pair_oob_req)	;
+BLE2_T63	:=	 (ble2_state = smp_s2 & input = pair_no_sc_req)	;
+BLE2_T64	:=	 (ble2_state = smp_s2 & input = pair_keyboard_display_no_sc_req)	;
+BLE2_T65	:=	 (ble2_state = smp_s2 & input = pair_display_yes_no_no_sc_req)	;
+BLE2_T66	:=	 (ble2_state = smp_s2 & input = pair_key_zero_req)	;
+BLE2_T68	:=	 (ble2_state = smp_s2 & input = sm_random_send)	;
+BLE2_T70	:=	 (ble2_state = smp_s2 & input = enc_req)	;
+BLE2_T75	:=	 (ble2_state = smp_s2 & input = enc_pause_req)	;
+BLE2_T79	:=	 (ble2_state = smp_s3 & input = pair_req)	;
+BLE2_T80	:=	 (ble2_state = smp_s3 & input = pair_keyboard_display_req)	;
+BLE2_T81	:=	 (ble2_state = smp_s3 & input = pair_display_yes_no_req)	;
+BLE2_T82	:=	 (ble2_state = smp_s3 & input = pair_oob_req)	;
+BLE2_T83	:=	 (ble2_state = smp_s3 & input = pair_no_sc_req)	;
+BLE2_T84	:=	 (ble2_state = smp_s3 & input = pair_keyboard_display_no_sc_req)	;
+BLE2_T85	:=	 (ble2_state = smp_s3 & input = pair_display_yes_no_no_sc_req)	;
+BLE2_T86	:=	 (ble2_state = smp_s3 & input = pair_key_zero_req)	;
+BLE2_T87	:=	 (ble2_state = smp_s3 & input = key_exchange)	;
+BLE2_T90	:=	 (ble2_state = smp_s3 & input = enc_req)	;
+BLE2_T91	:=	 (ble2_state = smp_s3 & input = key_invalid_exchange)	;
+BLE2_T95	:=	 (ble2_state = smp_s3 & input = enc_pause_req)	;
+BLE2_T99	:=	 (ble2_state = smp_s4 & input = pair_req)	;
+BLE2_T100	:=	 (ble2_state = smp_s4 & input = pair_keyboard_display_req)	;
+BLE2_T101	:=	 (ble2_state = smp_s4 & input = pair_display_yes_no_req)	;
+BLE2_T102	:=	 (ble2_state = smp_s4 & input = pair_oob_req)	;
+BLE2_T103	:=	 (ble2_state = smp_s4 & input = pair_no_sc_req)	;
+BLE2_T104	:=	 (ble2_state = smp_s4 & input = pair_keyboard_display_no_sc_req)	;
+BLE2_T105	:=	 (ble2_state = smp_s4 & input = pair_display_yes_no_no_sc_req)	;
+BLE2_T106	:=	 (ble2_state = smp_s4 & input = pair_key_zero_req)	;
+BLE2_T109	:=	 (ble2_state = smp_s4 & input = dh_check)	;
+BLE2_T110	:=	 (ble2_state = smp_s4 & input = enc_req)	;
+BLE2_T112	:=	 (ble2_state = smp_s4 & input = dh_invalid_check)	;
+BLE2_T115	:=	 (ble2_state = smp_s4 & input = enc_pause_req)	;
+BLE2_T119	:=	 (ble2_state = smp_s4 & input = discon_req)	;
+BLE2_T120	:=	 (ble2_state = recon_s0 & input = enc_pause_req)	;
+
+
+ASSIGN
+
+
+
+---------------BLE1 state machine ------------------
+
+init(ble1_state)	:=ll_s0;
+
+next(ble1_state)	:=	 case
+
+(BLE1_T15 | BLE1_T16 )	:	ll_s0	;
+(BLE1_T5 | BLE1_T10 | BLE1_T11 | BLE1_T12 | BLE1_T13 | BLE1_T14 | BLE1_T23 | BLE1_T24 | BLE1_T25 | BLE1_T42 | BLE1_T43 | BLE1_T44 | BLE1_T45 | BLE1_T46 | BLE1_T50 | BLE1_T51 | BLE1_T55 | BLE1_T58 | BLE1_T62 | BLE1_T63 | BLE1_T64 | BLE1_T65 | BLE1_T66 | BLE1_T70 | BLE1_T75 | BLE1_T78 | BLE1_T81 | BLE1_T82 | BLE1_T83 | BLE1_T84 | BLE1_T85 | BLE1_T86 | BLE1_T89 | BLE1_T90 | BLE1_T92 | BLE1_T95 | BLE1_T98 )	:	ll_s1	;
+(BLE1_T19 | BLE1_T20 | BLE1_T21 | BLE1_T39 | BLE1_T40 | BLE1_T41 | BLE1_T59 | BLE1_T60 | BLE1_T61 | BLE1_T79 | BLE1_T80 )	:	smp_s1	;
+(BLE1_T47 )	:	smp_s2	;
+(BLE1_T68 )	:	smp_s3	;
+(BLE1_T99 )	:	recon_s0	;
+(BLE1_T100 )	:	recon_s1	;
+TRUE	:	ble1_state	;
+esac	;
+
+---------------BLE2 state machine ------------------
+
+init(ble2_state)	:=ll_s0;
+
+next(ble2_state)	:=	 case
+
+(BLE2_T12 | BLE2_T15 | BLE2_T16 )	:	ll_s0	;
+(BLE2_T5 | BLE2_T10 | BLE2_T11 | BLE2_T13 | BLE2_T17 | BLE2_T23 | BLE2_T24 | BLE2_T25 | BLE2_T43 | BLE2_T44 | BLE2_T45 | BLE2_T46 | BLE2_T50 | BLE2_T51 | BLE2_T55 | BLE2_T63 | BLE2_T64 | BLE2_T65 | BLE2_T66 | BLE2_T70 | BLE2_T75 | BLE2_T83 | BLE2_T84 | BLE2_T85 | BLE2_T86 | BLE2_T90 | BLE2_T91 | BLE2_T95 | BLE2_T103 | BLE2_T104 | BLE2_T105 | BLE2_T106 | BLE2_T109 | BLE2_T110 | BLE2_T112 | BLE2_T115 )	:	ll_s1	;
+(BLE2_T19 | BLE2_T20 | BLE2_T21 | BLE2_T39 | BLE2_T40 | BLE2_T41 | BLE2_T59 | BLE2_T60 | BLE2_T61 | BLE2_T79 | BLE2_T80 | BLE2_T81 | BLE2_T99 | BLE2_T100 | BLE2_T101 )	:	smp_s1	;
+(BLE2_T47 | BLE2_T87 )	:	smp_s2	;
+(BLE2_T22 | BLE2_T42 | BLE2_T62 | BLE2_T82 | BLE2_T102 )	:	smp_s3	;
+(BLE2_T68 )	:	smp_s4	;
+(BLE2_T119 )	:	recon_s0	;
+(BLE2_T120 )	:	recon_s1	;
+TRUE	:	ble2_state	;
+esac	;
+
+
+init(ble1_action)	:= null_action	;
+
+next(ble1_action)	:=	 case
+
+(BLE1_T5 | BLE1_T14 )	:	version_resp	;
+(BLE1_T10 )	:	feature_resp	;
+(BLE1_T11 )	:	mtu_resp	;
+(BLE1_T12 )	:	length_resp	;
+(BLE1_T13 )	:	pri_resp	;
+(BLE1_T15 | BLE1_T16 | BLE1_T42 | BLE1_T46 | BLE1_T50 | BLE1_T51 | BLE1_T55 | BLE1_T58 | BLE1_T62 | BLE1_T66 | BLE1_T70 | BLE1_T75 | BLE1_T78 | BLE1_T82 | BLE1_T86 | BLE1_T90 | BLE1_T92 | BLE1_T95 | BLE1_T98 | BLE1_T99 | BLE1_T100 )	:	null_action	;
+(BLE1_T19 | BLE1_T20 | BLE1_T21 | BLE1_T39 | BLE1_T40 | BLE1_T41 | BLE1_T59 | BLE1_T60 | BLE1_T61 | BLE1_T79 | BLE1_T80 | BLE1_T81 )	:	pair_resp	;
+(BLE1_T23 | BLE1_T24 | BLE1_T25 | BLE1_T43 | BLE1_T44 | BLE1_T45 | BLE1_T63 | BLE1_T64 | BLE1_T65 | BLE1_T83 | BLE1_T84 | BLE1_T85 )	:	pair_resp_no_sc	;
+(BLE1_T47 )	:	public_key_response_sm_confirm	;
+(BLE1_T68 )	:	sm_random_received	;
+(BLE1_T89 )	:	dh_key_response	;
+TRUE	:	 null_action	;
+esac	;
+
+
+init(ble2_action)	:= null_action	;
+
+next(ble2_action)	:=	 case
+
+(BLE2_T5 | BLE2_T15 | BLE2_T16 | BLE2_T46 | BLE2_T50 | BLE2_T51 | BLE2_T55 | BLE2_T66 | BLE2_T70 | BLE2_T75 | BLE2_T86 | BLE2_T87 | BLE2_T90 | BLE2_T91 | BLE2_T95 | BLE2_T106 | BLE2_T110 | BLE2_T112 | BLE2_T115 | BLE2_T119 | BLE2_T120 )	:	null_action	;
+(BLE2_T10 )	:	feature_resp	;
+(BLE2_T11 )	:	mtu_resp	;
+(BLE2_T12 )	:	length_resp	;
+(BLE2_T13 )	:	pri_resp	;
+(BLE2_T17 )	:	version_resp	;
+(BLE2_T19 | BLE2_T20 | BLE2_T21 | BLE2_T22 | BLE2_T39 | BLE2_T40 | BLE2_T41 | BLE2_T42 | BLE2_T59 | BLE2_T60 | BLE2_T61 | BLE2_T62 | BLE2_T79 | BLE2_T80 | BLE2_T81 | BLE2_T82 | BLE2_T99 | BLE2_T100 | BLE2_T101 | BLE2_T102 )	:	pair_resp	;
+(BLE2_T23 | BLE2_T24 | BLE2_T25 | BLE2_T43 | BLE2_T44 | BLE2_T45 | BLE2_T63 | BLE2_T64 | BLE2_T65 | BLE2_T83 | BLE2_T84 | BLE2_T85 | BLE2_T103 | BLE2_T104 | BLE2_T105 )	:	pair_resp_no_sc	;
+(BLE2_T47 )	:	public_key_response_sm_confirm	;
+(BLE2_T68 )	:	sm_random_received	;
+(BLE2_T109 )	:	dh_key_response	;
+TRUE	:	 null_action	;
+esac	;
+
+LTLSPEC ( 
+G(!BLE1_T10)
+->
+ G( ! (input = feature_req & ble1_action = feature_resp & ble2_action = null_action))
+);
